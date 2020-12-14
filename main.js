@@ -10,7 +10,14 @@ const getLocation = async () => {
 const processData = async () => {
   //use await to look through JSON data for relevant info
   //return relevant data to be used in displayWeather
+  try {
+    const data = await fetch("", { mode: "cors" }); //quotes need url with api key
+  } catch (error) {
+    console.log(error);
+  }
+  console.log(data);
 };
+processData();
 const displayWeather = async () => {
   //add weather into #info to .display on the html doc
 };
