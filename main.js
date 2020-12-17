@@ -1,4 +1,5 @@
 //pseudo code
+let apiKey = "3452689cc9b0f58ce88b819c85bd8927";
 const getLocation = async () => {
   //take location as argument
   //callback processData() to fetch JSON and get relevant info
@@ -11,11 +12,14 @@ const processData = async () => {
   //use await to look through JSON data for relevant info
   //return relevant data to be used in displayWeather
   try {
-    const data = await fetch("", { mode: "cors" }); //quotes need url with api key
+    let data = await fetch(
+      "api.openweathermap.org/data/2.5/weather?q=chicago&appid=" + apiKey,
+      { mode: "cors" }
+    );
+    console.log(data);
   } catch (error) {
     console.log(error);
   }
-  console.log(data);
 };
 processData();
 const displayWeather = async () => {
