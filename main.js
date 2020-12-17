@@ -8,20 +8,26 @@ const getLocation = async () => {
   //callback setBackground to change the page's background image to fit
 };
 //start here
-const processData = async () => {
+const processData = async (location) => {
   //use await to look through JSON data for relevant info
   //return relevant data to be used in displayWeather
-  try {
-    let data = await fetch(
-      "api.openweathermap.org/data/2.5/weather?q=chicago&appid=" + apiKey,
-      { mode: "cors" }
-    );
-    console.log(data);
-  } catch (error) {
-    console.log(error);
-  }
+  //try {
+  let response = await fetch(
+    `http://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}`,
+    {
+      mode: "cors",
+    }
+  );
+  //console.log(response.ok);
+  const data = await response.json();
+  console.log(data);
+  // } catch (error) {
+  //   console.log(error);
+  // }
 };
-processData();
+processData("Toronto,CA");
+//let success = processData("detroit");
+//console.log(success);
 const displayWeather = async () => {
   //add weather into #info to .display on the html doc
 };
