@@ -40,15 +40,23 @@ const processData = async (location) => {
     );
     const data = await response.json();
     //in case of further error testing
-    //console.log(data.weather);
+    //console.log(data.weather[0].description);
     return data.weather[0].description; //return weather report as string
   } catch (error) {
     console.log(error);
   }
 };
 getLocation("New Orleans");
+//getLocation("Chicago"); need a function that deletes children of former search in #info
 const displayWeather = (report) => {
   //add weather into #info to .display on the html doc
+  const info = document.getElementById("info");
+  //info.appendChild("report");
+  const weather = document.createElement("p");
+  const text = document.createTextNode(report);
+  weather.appendChild(text);
+  info.appendChild(weather);
+  //info.appendChild(weather);
 };
 const setBackground = async () => {
   //fetch a gif from giphy
