@@ -2,31 +2,14 @@
 const apiKey = "3452689cc9b0f58ce88b819c85bd8927";
 const getLocation = async (city) => {
   //take location as argument
-  //new function to check if city name has multiple words
-  const location = cityName(city);
-
   //callback processData() to fetch JSON and get relevant info
-  const report = await processData(location);
+  const report = await processData(city);
   //callback displayWeather() to... display the weather
   displayWeather(report);
+  setBackground();
   //callback setBackground to change the page's background image to fit
 };
-const cityName = (city) => {
-  //seperate city into multiple words
-  let newName = Array.from(city);
-  let location = "";
-  newName.forEach((item, i) => {
-    if (item === " ") {
-      location += "+";
-    } else {
-      location += item;
-    }
-  });
-
-  return location;
-
-  //spit back encapsulated string with + instead of spaces
-};
+const reset = () => {};
 //start here
 const processData = async (location) => {
   //use await to look through JSON data for relevant info
@@ -46,7 +29,7 @@ const processData = async (location) => {
     console.log(error);
   }
 };
-getLocation("New Orleans");
+getLocation("New York");
 //getLocation("Chicago"); need a function that deletes children of former search in #info
 const displayWeather = (report) => {
   //add weather into #info to .display on the html doc
@@ -60,6 +43,16 @@ const displayWeather = (report) => {
 };
 const setBackground = async () => {
   //fetch a gif from giphy
+  try {
+    let response = await fetch(
+      `https://api.giphy.com/v1/gifs/search?api_key=i3kTKKLGsAgKnO0B7ERRTRGNllXj45s2&q=clear sky&limit=25&offset=0&rating=g&lang=en`,
+      { mode: "cors" }
+    );
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    alert(error);
+  }
   //set as background image for the webpage
 };
 //OPTIONAL
