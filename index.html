@@ -7,11 +7,23 @@
     <script src="main.js"></script>
     <title>Weather App</title>
   </head>
-  <body>
+  <body id="body">
     <div class="display">
       <span id="searchbar">
-        <input type="text" name="" placeholder="Enter City Name" value="" />
-        <button type="button" name="button">Enter</button>
+        <input
+          id="input"
+          type="text"
+          name=""
+          placeholder="Enter City Name"
+          value=""
+        />
+        <button
+          type="button"
+          name="button"
+          onclick="getLocation(document.getElementById('input').value)"
+        >
+          Enter
+        </button>
       </span>
       <span id="info"></span>
     </div>
