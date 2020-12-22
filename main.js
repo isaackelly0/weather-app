@@ -1,5 +1,6 @@
 //pseudo code
-const apiKey = "3452689cc9b0f58ce88b819c85bd8927";
+const weatherKey = "3452689cc9b0f58ce88b819c85bd8927";
+const gifKey = "i3kTKKLGsAgKnO0B7ERRTRGNllXj45s2";
 const getLocation = async (city) => {
   //take location as argument
   //callback processData() to fetch JSON and get relevant info
@@ -13,14 +14,13 @@ const getLocation = async (city) => {
   setBackground(report);
   //callback setBackground to change the page's background image to fit
 };
-const reset = () => {};
 //start here
 const processData = async (location) => {
   //use await to look through JSON data for relevant info
   //return relevant data to be used in displayWeather
   try {
     let response = await fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}`,
+      `http://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${weatherKey}`,
       {
         mode: "cors",
       }
@@ -33,7 +33,6 @@ const processData = async (location) => {
     console.log(error);
   }
 };
-getLocation("new york");
 const displayWeather = (report) => {
   //add weather into #info to .display on the html doc
   const info = document.getElementById("info");
@@ -46,7 +45,7 @@ const setBackground = async (report) => {
   //fetch a gif from giphy
   try {
     let response = await fetch(
-      `https://api.giphy.com/v1/gifs/search?api_key=i3kTKKLGsAgKnO0B7ERRTRGNllXj45s2&q=${report}&limit=25&offset=0&rating=g&lang=en`,
+      `https://api.giphy.com/v1/gifs/search?api_key=${gifKey}&q=${report}&limit=25&offset=0&rating=g&lang=en`,
       { mode: "cors" }
     );
     const data = await response.json();
