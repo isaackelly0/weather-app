@@ -9,4 +9,26 @@ body {
 .display {
   align-self: center;
   background-color: white;
+  padding: 2%;
+  border-radius: 4%;
+}
+#searchbar {
+  display: flex;
+  width: 100%;
+}
+#input {
+  width: 50%;
+  border-radius: 0;
+  padding: 2%;
+}
+#searchbar button {
+  width: 50%;
+  border-radius: 5%;
+  background-color: blue;
+  border-style: hidden;
+  color: white;
+}
+#info {
+  display: flex;
+  justify-content: center;
 }
