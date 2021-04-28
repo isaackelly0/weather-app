@@ -20,7 +20,7 @@ const processData = async (location) => {
   //return relevant data to be used in displayWeather
   try {
     let response = await fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${weatherKey}`,
+      `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${weatherKey}`,
       {
         mode: "cors",
       }
